@@ -23,7 +23,7 @@ angular
 
         function calculateGPA(data) {
             var gradePoints = getGradePoints();
-            var result = {'credits' : 0, 'gpa' : 0, 'total' : 0};
+            var result = {'credits' : 0, 'gpa' : 0, 'gradePoint' : 0};
             var dataKey;
 
             for (dataKey in data) {
@@ -35,21 +35,37 @@ angular
                     if (!['W', 'WP'].includes(data[dataKey].grade)) {
                         var credit = gradePoints[data[dataKey].grade] * data[dataKey].hour;
                         result['credits'] += data[dataKey].hour;
-                        result['total'] += credit;
+                        result['gradePoint'] += credit;
                     }
                 }
             }
 
-            result['gpa'] = result['total']/result['credits'];
+            result['gpa'] = result['gradePoint']/result['credits'];
             return result;
         }
 
         function calculateCGPA(data, result) {
             var totalCredits = result['credits'] + data['creditsCompleted'];
-            var total = (data['creditsCompleted'] * data['cgpa']) + result['total'];
+            var totalGradePoint = (data['creditsCompleted'] * data['cgpa'])
+            + result['gradePoint'];
 
-            result['cgpaCalculated'] = total/totalCredits;
+            result['cgpaCalculated'] = totalGradePoint/totalCredits;
+
+            if ('currentCredits', 'cgpaExpected' in data) {
+                result = calculateGPAExpected(data, result);
+            }
+
             return result;
+        }
+
+        function calculateGPAExpected(data, result) {
+            var totalGradePoint = data['creditsCompleted'] * data['cgpa'];
+            var expectedTotalGradePoint = data['cgpaExpected']
+            * (data['currentCredits'] + data['creditsCompleted'])
+
+            result['gpaExpected'] = (expectedTotalGradePoint - totalGradePoint)
+            / data['currentCredits'];
+            return result
         }
 
         function calculateGrades(data) {
