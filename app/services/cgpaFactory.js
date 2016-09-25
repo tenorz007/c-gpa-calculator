@@ -24,13 +24,14 @@ angular
         function calculateGPA(data) {
             var gradePoints = getGradePoints();
             var result = {'credits' : 0, 'gpa' : 0, 'total' : 0};
+            var dataKey;
 
-            for (var dataKey in data) {
+            for (dataKey in data) {
                 if (!data.hasOwnProperty(dataKey)) {
                     continue;
                 }
 
-                if ('hour', 'grade' in data[dataKey]) {
+                if (data[dataKey].hasOwnProperty('hour') && data[dataKey].hasOwnProperty('grade')) {
                     if (!['W', 'WP'].includes(data[dataKey].grade)) {
                         var credit = gradePoints[data[dataKey].grade] * data[dataKey].hour;
                         result['credits'] += data[dataKey].hour;
@@ -43,8 +44,22 @@ angular
             return result;
         }
 
+        function calculateCGPA(data, result) {
+            var totalCredits = result['credits'] + data['creditsCompleted'];
+            var total = (data['creditsCompleted'] * data['cgpa']) + result['total'];
+
+            result['cgpaCalculated'] = total/totalCredits;
+            return result;
+        }
+
         function calculateGrades(data) {
-            var result = calculateGPA(data)
+            var result = calculateGPA(data);
+
+            if ('cgpa', 'creditsCompleted' in data && data['cgpa'] < 4
+                && data['creditsCompleted'] > 0) {
+                result = calculateCGPA(data, result);
+            }
+
             return result;
         }
 
