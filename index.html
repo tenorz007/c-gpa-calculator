@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>C/GPA Calculator</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    <body ng-app="cgpaCalculator">
+        <div class="container container-fluid container-fullw bg-white">
+            <div ng-controller="cgpaCtrl">
+                <div class="col-sm-4" ng-repeat="number in getListSize(listSize) track by $index">
+                    <input type="text">
+                </div>
+                <pre>{{ gradePoints | json }}</pre>
+                <pre>{{ grades }}</pre>
+                <button class="btn btn-primary" ng-show="listSize < 7" ng-click="listSize = listSize + 1">Increase</button>
+                <button class="btn btn-warning" ng-show="listSize >= 1" ng-click="listSize = listSize - 1">Decrease</button>
+                <pre>{{ listSize }}</pre>
+            </div>
+        </div>
+    </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.4/ui-bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.4/ui-bootstrap-tpls.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/controllers/cgpaCtrl.js"></script>
+    <script src="app/services/cgpaFactory.js"></script>
+
+</html>
