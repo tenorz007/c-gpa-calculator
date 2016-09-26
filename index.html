@@ -10,42 +10,42 @@
         <div class="container container-fluid container-fullw" ng-controller="cgpaCtrl">
             <form name="cgpaForm" class="form-horizontal" ng-submit="getCalculatedGrades()">
                 <fieldset>
-                    <div class="form-inline"  ng-repeat="number in results.rows track by $index">
+                    <div class="form-inline"  ng-repeat="number in data.rows track by $index">
                         <div class="form-group">
-                            <input type="text" class="form-control" ng-model="results.rows[$index].course">
+                            <input type="text" class="form-control" ng-model="data.rows[$index].course">
                         </div>
                         <div class="form-group">
-                            <select class="form-control" ng-model="results.rows[$index].hour"
+                            <select class="form-control" ng-model="data.rows[$index].hour"
                                 ng-options="hour for hour in creditHours track by hour">
                                 <option value="" disabled selected>-credit-</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="form-control" ng-model="results.rows[$index].grade"
+                            <select class="form-control" ng-model="data.rows[$index].grade"
                                 ng-options="grade for grade in grades track by grade">
                                 <option value="" disabled selected>-grade-</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <button class="btn" ng-click="results.rows.splice($index, 1)" ng-show="results.rows.length > 1">
-                                <i class="fa fa-minus"></i>D
+                            <button class="btn" ng-click="data.rows.splice($index, 1)" ng-show="data.rows.length > 1">
+                                <i class="glyphicon glyphicon-minus"></i>D
                             </button>
                         </div>
                     </div>
                     <div>
-                    <button class="btn btn-primary" ng-show="results.rows.length < 7" ng-click="results.rows.push(null)">Increase</button>
-                    <button class="btn btn-warning" ng-show="results.rows.length >= 1" ng-click="results.rows.pop()">Decrease</button>
+                    <button class="btn btn-primary" ng-show="data.rows.length < 7" ng-click="data.rows.push(null)">Increase</button>
+                    <button class="btn btn-warning" ng-show="data.rows.length >= 1" ng-click="data.rows.pop()">Decrease</button>
                         <button type="submit" class="btn btn-primary">
                             Submit
                         </button>
-                        <button type="reset" class="btn btn-primary btn-o" ng-click="results = {}">
+                        <button type="reset" class="btn btn-primary btn-o" ng-click="data = {}">
                             Cancel
                         </button>
                     </div>
                 </fieldset>
             </form>
-            <pre>{{ results | json }}</pre>
-            <pre>{{ answer | json }}</pre>
+            <pre>{{ data | json }}</pre>
+            <pre>{{ result | json }}</pre>
         </div>
     </body>
 
