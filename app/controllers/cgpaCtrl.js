@@ -8,13 +8,8 @@ angular
         $scope.gradePoints = cgpaFactory.getGradePoints();
         $scope.creditHours = cgpaFactory.getCreditHours();
 
-        $scope.results = {};
+        $scope.results = {'rows' : new Array(5)};
         $scope.answer = {};
-        $scope.listSize = 5;
-
-        $scope.getListSize = function(number) {
-            return new Array(number);
-        }
 
         $scope.getCalculatedGrades = function() {
             $scope.answer = cgpaFactory.calculateGrades($scope.results);

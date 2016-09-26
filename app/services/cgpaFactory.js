@@ -27,11 +27,11 @@ angular
             var dataKey;
 
             for (dataKey in data) {
-                if (!data.hasOwnProperty(dataKey)) {
+                if (!data.hasOwnProperty(dataKey) || data[dataKey] === null) {
                     continue;
                 }
 
-                if (data[dataKey].hasOwnProperty('hour') && data[dataKey].hasOwnProperty('grade')) {
+                if ('hour', 'grade' in data[dataKey]) {
                     if (!['W', 'WP'].includes(data[dataKey].grade)) {
                         var credit = gradePoints[data[dataKey].grade] * data[dataKey].hour;
                         result['credits'] += data[dataKey].hour;
@@ -42,6 +42,16 @@ angular
 
             result['gpa'] = result['gradePoint']/result['credits'];
             return result;
+        }
+
+        function calculateGPAExpected(data, result) {
+            var totalGradePoint = data['creditsCompleted'] * data['cgpa'];
+            var expectedTotalGradePoint = data['cgpaExpected']
+            * (data['currentCredits'] + data['creditsCompleted'])
+
+            result['gpaExpected'] = (expectedTotalGradePoint - totalGradePoint)
+            / data['currentCredits'];
+            return result
         }
 
         function calculateCGPA(data, result) {
@@ -58,20 +68,10 @@ angular
             return result;
         }
 
-        function calculateGPAExpected(data, result) {
-            var totalGradePoint = data['creditsCompleted'] * data['cgpa'];
-            var expectedTotalGradePoint = data['cgpaExpected']
-            * (data['currentCredits'] + data['creditsCompleted'])
-
-            result['gpaExpected'] = (expectedTotalGradePoint - totalGradePoint)
-            / data['currentCredits'];
-            return result
-        }
-
         function calculateGrades(data) {
-            var result = calculateGPA(data);
+            var result = calculateGPA(data.rows);
 
-            if ('cgpa', 'creditsCompleted' in data && data['cgpa'] < 4
+            if ('cgpa', 'creditsCompleted' in data && data['cgpa'] <= 4
                 && data['creditsCompleted'] > 0) {
                 result = calculateCGPA(data, result);
             }
