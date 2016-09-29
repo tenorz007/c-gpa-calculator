@@ -8,9 +8,15 @@
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     </head>
     <body ng-app="cgpaCalculator">
-        <div class="container container-fluid container-fullw" ng-controller="cgpaCtrl">
-            <form name="cgpaForm" class="form-horizontal">
+        <div class="container col-md-4 col-md-offset-4" ng-controller="cgpaCtrl">
+            <form name="cgpaForm">
                 <fieldset>
+                    <div class="form-group">
+                        <input type="number" class="form-control" ng-model="data.cgpa">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" ng-model="data.creditsCompleted">
+                    </div>
                     <div class="form-inline"  ng-repeat="number in data.rows track by $index">
                         <div class="form-group">
                             <input type="text" class="form-control" ng-model="data.rows[$index].course">
@@ -28,20 +34,27 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <button class="btn" ng-click="data.rows.splice($index, 1)" ng-show="data.rows.length > 1">
-                                <i class="glyphicon glyphicon-minus"></i>D
-                            </button>
+                            <a class="btn btn-danger" aria-label="Delete" ng-click="data.rows.splice($index, 1)" ng-show="data.rows.length > 1">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </a>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" ng-model="data.cgpaExpected">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" ng-model="data.currentCredits">
+                    </div>
                     <div>
-                    <button class="btn btn-primary" ng-show="data.rows.length < 7" ng-click="data.rows.push(null)">Increase</button>
-                    <button class="btn btn-warning" ng-show="data.rows.length >= 1" ng-click="data.rows.pop()">Decrease</button>
-                        <button type="submit" class="btn btn-primary">
-                            Submit
-                        </button>
-                        <button type="reset" class="btn" ng-click="reset()">
-                            <i class="fa fa-refresh" aria-hidden="true"></i>Cancel
-                        </button>
+                        <a class="btn btn-default" aria-hidden="true" ng-click="data.rows.push(null)">
+                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn btn-default" aria-hidden="true" ng-click="data.rows.pop()">
+                            <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn btn-default" aria-hidden="true" ng-click="reset()">
+                            <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </fieldset>
             </form>
