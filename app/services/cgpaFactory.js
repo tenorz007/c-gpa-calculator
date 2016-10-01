@@ -22,6 +22,26 @@ angular
             return [4, 3, 2, 1, 0];
         }
 
+        function getStanding(data, gradeType) {
+            if (isNaN(data[gradeType])) {
+                return data;
+            }
+
+            if (data[gradeType] >= 3.8) {
+                data[gradeType + "Standing"] = "President's List";
+                data[gradeType + "Animation"] = true;
+            } else if (data[gradeType] >= 3.5 && data[gradeType] < 3.8) {
+                data[gradeType + "Standing"] = "Dean's List";
+                data[gradeType + "Animation"] = true;
+            } else if (data[gradeType] >= 2 && data[gradeType] < 3.5) {
+                data[gradeType + "Standing"] = "Good Standing";
+            } else {
+                data[gradeType + "Standing"] = "See your advisor!";
+            }
+
+            return data;
+        }
+
         function calculateGPA(data) {
             var gradePoints = getGradePoints();
             var result = {"totalCredits" : 0, "gpa" : 0, "gradePoint" : 0};
@@ -41,7 +61,8 @@ angular
                 }
             }
 
-            result["gpa"] = result["gradePoint"] / result["totalCredits"];
+            result["gpa"] = (result["gradePoint"] / result["totalCredits"]).toFixed(4).slice(0, -2);
+            result = getStanding(result, "gpa");
             return result;
         }
 
@@ -50,8 +71,8 @@ angular
             var expectedTotalGradePoint = data["cgpaExpected"]
             * (data["currentCredits"] + data["creditsCompleted"]);
 
-            result["gpaExpected"] = (expectedTotalGradePoint - totalGradePoint)
-            / data["currentCredits"];
+            result["gpaExpected"] = ((expectedTotalGradePoint - totalGradePoint)
+            / data["currentCredits"]).toFixed(4).slice(0, -2);
             return result
         }
 
@@ -60,8 +81,8 @@ angular
             var totalGradePoint = (data["creditsCompleted"] * data["cgpa"])
             + result["gradePoint"];
 
-            result["cgpaCalculated"] = totalGradePoint / totalCredits;
-
+            result["cgpaCalculated"] = (totalGradePoint / totalCredits).toFixed(4).slice(0, -2);
+            result = getStanding(result, "cgpaCalculated")
             if ("currentCredits", "cgpaExpected" in data) {
                 result = calculateGPAExpected(data, result);
             }
