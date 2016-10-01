@@ -34,7 +34,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <a class="btn btn-danger" aria-label="Delete" ng-click="data.rows.splice($index, 1)" ng-show="data.rows.length > 1">
+                            <a class="btn btn-danger" aria-label="Delete" ng-click="data.rows.splice($index, 1)" ng-show="data.rows.length > rowsInfo.min">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
                             </a>
                         </div>
@@ -46,10 +46,10 @@
                         <input type="number" class="form-control" ng-model="data.currentCredits">
                     </div>
                     <div>
-                        <a class="btn btn-default" aria-hidden="true" ng-click="data.rows.push(null)">
+                        <a class="btn" aria-hidden="true" ng-click="data.rows.push(null)" ng-show="data.rows.length < rowsInfo.max">
                             <i class="fa fa-plus-circle" aria-hidden="true"></i>
                         </a>
-                        <a class="btn btn-default" aria-hidden="true" ng-click="data.rows.pop()">
+                        <a class="btn" aria-hidden="true" ng-click="data.rows.pop()" ng-show="data.rows.length > rowsInfo.min">
                             <i class="fa fa-minus-circle" aria-hidden="true"></i>
                         </a>
                         <a class="btn btn-default" aria-hidden="true" ng-click="reset()">

@@ -8,10 +8,16 @@ angular
         $scope.gradePoints = cgpaFactory.getGradePoints();
         $scope.creditHours = cgpaFactory.getCreditHours();
 
-        $scope.data = {"rows" : new Array(5)};
+        $scope.rowsInfo = {
+            min : 1,
+            max : 7,
+            init : 5
+        };
+
+        $scope.data = {"rows" : new Array($scope.rowsInfo.init)};
 
         $scope.reset = function() {
-            $scope.data = {"rows" : new Array(5)};
+            $scope.data = {"rows" : new Array($scope.rowsInfo.init)};
         };
 
         $scope.$watch("data", function() {
