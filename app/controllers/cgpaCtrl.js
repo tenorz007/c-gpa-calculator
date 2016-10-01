@@ -11,7 +11,7 @@ angular
         $scope.data = {"rows" : new Array(5)};
 
         $scope.reset = function() {
-            $scope.data.rows = new Array(5);
+            $scope.data = {"rows" : new Array(5)};
         };
 
         $scope.$watch("data", function() {
