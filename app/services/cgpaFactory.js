@@ -52,7 +52,7 @@ angular
                     continue;
                 }
 
-                if ("hour", "grade" in data[dataKey]) {
+                if ("hour" in data[dataKey] && "grade" in data[dataKey]) {
                     if (!["W", "WP"].includes(data[dataKey].grade)) {
                         var credit = gradePoints[data[dataKey].grade] * data[dataKey].hour;
                         result["totalCredits"] += data[dataKey].hour;
