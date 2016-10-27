@@ -93,11 +93,12 @@ angular
         function calculateGrades(data) {
             var result = calculateGPA(data.rows);
 
-            if ("cgpa", "creditsCompleted" in data && data["cgpa"] <= 4
+            if ("cgpa" in data && "creditsCompleted" in data && data["cgpa"] <= 4
                 && data["creditsCompleted"] > 0) {
                 result = calculateCGPA(data, result);
             }
 
+            result["gradePoint"] = result["gradePoint"].toFixed(4).slice(0, -2)
             return result;
         }
 
