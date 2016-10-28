@@ -30,15 +30,20 @@ angular
             if (data[gradeType] >= 3.8) {
                 data[gradeType + "Standing"] = "President's List";
                 data[gradeType + "Animation"] = true;
+                data[gradeType + "ProgressBar"] = "progress-bar-success";
             } else if (data[gradeType] >= 3.5 && data[gradeType] < 3.8) {
                 data[gradeType + "Standing"] = "Dean's List";
                 data[gradeType + "Animation"] = true;
+                data[gradeType + "ProgressBar"] = "progress-bar-info";
             } else if (data[gradeType] >= 2 && data[gradeType] < 3.5) {
                 data[gradeType + "Standing"] = "Good Standing";
+                data[gradeType + "ProgressBar"] = "progress-bar-warning";
             } else {
                 data[gradeType + "Standing"] = "See your advisor!";
+                data[gradeType + "ProgressBar"] = "progress-bar-danger";
             }
 
+            data[gradeType + "ProgressBarWidth"] = (data[gradeType] / 4.00) * 100;
             return data;
         }
 
