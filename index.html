@@ -11,7 +11,7 @@
     </head>
     <body ng-app="cgpaCalculator">
         <div class="container vertical-center" ng-controller="cgpaCtrl">
-            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
                 <form name="cgpaForm" id="main-container">
 
                     <h3 class="title">
@@ -69,7 +69,7 @@
                                     </select>
                                 </div>
 
-                                <div class="col-lg-1 btn-cont">
+                                <div class="col-lg-1 pull-right btn-cont">
                                     <a class="btn primary" ng-click="data.rows.splice($index, 1)" ng-show="data.rows.length > rowsInfo.min">
                                         <i class="fa fa-trash-o" ></i>
                                     </a>
