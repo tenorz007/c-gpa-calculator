@@ -7,6 +7,7 @@ angular
         $scope.grades = cgpaFactory.getGrades();
         $scope.gradePoints = cgpaFactory.getGradePoints();
         $scope.creditHours = cgpaFactory.getCreditHours();
+        $scope.year = new Date();
 
         $scope.rowsInfo = {
             min : 1,

@@ -3,6 +3,7 @@
     <head>
         <title>C/GPA Calculator</title>
         <meta charset="utf-8">
+        <meta name="author" content="Chizzy Alaedu">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -65,7 +66,7 @@
 
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                     <select class="form-control" ng-model="data.rows[$index].grade" ng-options="grade for grade in grades track by grade">
-                                        <option value="" disabled selected>grade</option>
+                                        <option value="" disabled selected>--</option>
                                     </select>
                                 </div>
 
@@ -177,6 +178,13 @@
                     </div>
 
                 </form>
+
+                <p class="text-center uppercase">
+                    &#169; Copyright {{ year | date:'yyyy' }} Developed by
+                    <a href="mailto:chizzy.alaedu@aun.edu.ng" title="Chizzy Alaedu, chizzy.alaedu@aun.edu.ng">@tenorz007</a><br>
+                    Advised By Ezinwa. All rights reserved
+                </p>
+
             </div>
         </div>
     </body>
