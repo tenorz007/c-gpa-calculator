@@ -22,7 +22,6 @@ angular
         };
 
         $scope.$watch("data", function() {
-            console.log("form changed");
             $scope.result = cgpaFactory.calculateGrades($scope.data);
         }, true)
 
