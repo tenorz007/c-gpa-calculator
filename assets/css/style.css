@@ -1,16 +1,8 @@
-.vertical-center {
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 100vh; /* These two lines are counted as one :-)       */
-
-  display: flex;
-  align-items: center;
-}
-
 #main-container {
     border: solid 5px #DBDADA;
     border-radius: 5px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     padding: 0px;
     position: relative;
     overflow: hidden;
@@ -18,12 +10,12 @@
 
 #main-container .title {
     border-bottom: solid 1px #DBDADA;
-    padding: 20px 25px;
+    padding: 20px 20px;
     margin-top: 0px;
     font-size: 16px;
     font-weight: 700;
     color: #3a3a3a;
-    margin-bottom: 35px;
+    margin-bottom: 10px;
 }
 
 #main-container .title a.btn {
@@ -38,11 +30,11 @@
 }
 
 #main-container .form-row.top {
-    padding-bottom: 40px;
+    padding-bottom: 10px;
 }
 
 #main-container .form-row.input-row {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 #main-container .form-row label {
@@ -53,8 +45,8 @@
     background: #f5f5f5;
     border-top: solid 1px #d2d2d2;
     border-bottom: solid 1px #d2d2d2;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     text-transform: uppercase
 }
 
@@ -74,7 +66,7 @@
 }
 
 #main-container .bottom-content .col {
-    padding-top: 40px;
+    padding-top: 20px;
     padding-bottom: 10px;
     border-left: solid 1px #d2d2d2;
 }
@@ -89,7 +81,7 @@
 
 #main-container .bottom-content .content-value {
     font-size: 31px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 #main-container .bottom-content .progress {
@@ -97,12 +89,12 @@
 }
 
 #main-container .bottom-content .form-row.title-bar.score-bar {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 5px;
 }
 
 #main-container .bottom-content .form-row.title-bar.score-bar p {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 #main-container .bottom-content .form-row.title-bar.score-bar p.progress-value {
@@ -113,8 +105,8 @@
     font-size: 13px;
     font-weight: 400;
     text-transform: uppercase;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 #main-container .bottom-content .form-row.title-bar .gpa-expected p span {

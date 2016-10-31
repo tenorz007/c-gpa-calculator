@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     </head>
     <body ng-app="cgpaCalculator">
-        <div class="container vertical-center" ng-controller="cgpaCtrl">
+        <div class="container" ng-controller="cgpaCtrl">
             <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
                 <form name="cgpaForm" id="main-container">
 
@@ -24,12 +24,12 @@
 
                     <div class="row">
                         <div class="form-row top">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-xs-6">
                                 <label for="cgpa">Current CGPA:</label>
                                 <input id="cgpa" type="number" class="form-control" ng-model="data.cgpa" placeholder="E.g. 3.56">
                             </div>
-                            <div class="col-lg-6">
-                                <label for="cgpa">Total Hours Completed</label>
+                            <div class="col-lg-6 col-xs-6">
+                                <label for="cgpa">Hours Completed</label>
                                 <input id="creditsCompleted" type="number" class="form-control" ng-model="data.creditsCompleted" placeholder="E.g. 45">
                             </div>
                         </div>
@@ -60,7 +60,7 @@
 
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                     <select class="form-control" ng-model="data.rows[$index].hour" ng-options="hour for hour in creditHours track by hour">
-                                        <option value="" disabled selected>credit</option>
+                                        <option value="" disabled selected>--</option>
                                     </select>
                                 </div>
 
@@ -103,26 +103,26 @@
 
                         <div class="row">
                             <div class="form-row title-bar col-bar">
-                                <div class="col-lg-3 col text-center">
+                                <div class="col-lg-3 col col-xs-3 text-center">
                                     <p>CREDITS</p>
                                     <div class="content-value">
                                         <span>{{ result.totalCredits }}</span>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col text-center">
+                                <div class="col-lg-3 col col-xs-3 text-center">
                                     <p>GRADEPOINTS</p>
                                     <div class="content-value">
                                         <span>{{ result.gradePoint }}</span>
                                     </div>
                                 </div>
 
-                                <div class="col-lg-3 col text-center">
+                                <div class="col-lg-3 col col-xs-3 text-center">
                                     <p>GPA</p>
                                     <div class="content-value">
                                         <span>{{ result.gpa }}</span>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col text-center">
+                                <div class="col-lg-3 col col-xs-3 text-center">
                                     <p>CGPA</p>
                                     <div class="content-value">
                                         <span>{{ result.cgpaCalculated || 0 }}</span>
@@ -150,11 +150,11 @@
                     <fieldset>
                         <div class="row">
                             <div class="form-row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-6 col-xs-6">
                                     <label for="cgpaExpected">I am currently taking:</label>
                                     <input  id="cgpaExpected" type="number" class="form-control" ng-model="data.currentCredits" placeholder="E.g. 45">
                                 </div>
-                                <div  class="col-lg-6">
+                                <div  class="col-lg-6 col-xs-6">
                                     <label for="currentCredits">I want to raise my CGPA to:</label>
                                     <input id="currentCredits" type="number" class="form-control" ng-model="data.cgpaExpected" placeholder="E.g. 3.56">
                                 </div>
