@@ -39,7 +39,7 @@ angular
                 data[gradeType + "Standing"] = "Good Standing";
                 data[gradeType + "ProgressBar"] = "progress-bar-warning";
             } else {
-                data[gradeType + "Standing"] = "See your advisor!";
+                data[gradeType + "Standing"] = "Not Good standing - See your academic advisor";
                 data[gradeType + "ProgressBar"] = "progress-bar-danger";
             }
 

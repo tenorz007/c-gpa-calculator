@@ -17,7 +17,7 @@
 
                     <h3 class="title">
                         GRADE SCALE: 4.00
-                        <a class="btn default pull-right" ng-click="reset()">
+                        <a class="btn default pull-right" ng-click="reset()" title="Click to reset form!">
                             <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>
                         </a>
                     </h3>
@@ -26,10 +26,10 @@
                         <div class="form-row top">
                             <div class="col-lg-6 col-xs-6">
                                 <label for="cgpa">Current CGPA:</label>
-                                <input id="cgpa" type="number" class="form-control" ng-model="data.cgpa" placeholder="E.g. 3.56">
+                                <input id="cgpa" type="number" class="form-control" ng-model="data.cgpa" placeholder="E.g. 2.56">
                             </div>
                             <div class="col-lg-6 col-xs-6">
-                                <label for="cgpa">Hours Completed</label>
+                                <label for="cgpa">Earned Hours</label>
                                 <input id="creditsCompleted" type="number" class="form-control" ng-model="data.creditsCompleted" placeholder="E.g. 45">
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                             <div class="form-row input-row">
 
                                 <div class="col-lg-5 col-md-3 col-sm-4 col-xs-4">
-                                    <input type="text" class="form-control" ng-model="data.rows[$index].course" placeholder="E.g. CIE 105">
+                                    <input type="text" class="form-control" ng-model="data.rows[$index].course" placeholder="E.g. AUN 101">
                                 </div>
 
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -71,7 +71,7 @@
                                 </div>
 
                                 <div class="col-lg-1 pull-right btn-cont">
-                                    <a class="btn primary" ng-click="data.rows.splice($index, 1)" ng-show="data.rows.length > rowsInfo.min">
+                                    <a class="btn primary" ng-click="data.rows.splice($index, 1)" ng-show="data.rows.length > rowsInfo.min" title="Click to delete row!">
                                         <i class="fa fa-trash-o" ></i>
                                     </a>
                                 </div>
@@ -81,19 +81,11 @@
 
                         <div class="row">
                             <div class="form-row">
-
                                 <div class="col-lg-1 btn-cont pull-right">
-                                    <a class="btn primary" ng-click="data.rows.pop()" ng-show="data.rows.length > rowsInfo.min">
-                                        <i class="fa fa-minus"></i>
-                                    </a>
-                                </div>
-
-                                <div class="col-lg-1 btn-cont pull-right">
-                                    <a class="btn default" ng-click="data.rows.push(null)" ng-show="data.rows.length < rowsInfo.max">
+                                    <a class="btn default" ng-click="data.rows.push(null)" ng-show="data.rows.length < rowsInfo.max" title="Click to add row!">
                                         <i class="fa fa-plus"></i>
                                     </a>
                                 </div>
-
                             </div>
                         </div>
 
@@ -104,26 +96,26 @@
                         <div class="row">
                             <div class="form-row title-bar col-bar">
                                 <div class="col-lg-3 col col-xs-3 text-center">
-                                    <p>CREDITS</p>
+                                    <p class="uppercase">Total Credits</p>
                                     <div class="content-value">
                                         <span>{{ result.totalCredits }}</span>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col col-xs-3 text-center">
-                                    <p>GRADEPOINTS</p>
+                                    <p class="uppercase">Grade Points</p><br>
                                     <div class="content-value">
                                         <span>{{ result.gradePoint }}</span>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-3 col col-xs-3 text-center">
-                                    <p>GPA</p>
+                                    <p class="uppercase">gpa</p><br>
                                     <div class="content-value">
                                         <span>{{ result.gpa }}</span>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col col-xs-3 text-center">
-                                    <p>CGPA</p>
+                                    <p class="uppercase">cgpa</p><br>
                                     <div class="content-value">
                                         <span>{{ result.cgpaCalculated || 0 }}</span>
                                     </div>
@@ -156,7 +148,7 @@
                                 </div>
                                 <div  class="col-lg-6 col-xs-6">
                                     <label for="currentCredits">I want to raise my CGPA to:</label>
-                                    <input id="currentCredits" type="number" class="form-control" ng-model="data.cgpaExpected" placeholder="E.g. 3.56">
+                                    <input id="currentCredits" type="number" class="form-control" ng-model="data.cgpaExpected" placeholder="E.g. 2.56">
                                 </div>
                             </div>
                         </div>
@@ -169,7 +161,7 @@
                                     <div class="content-value">
                                         <p>
                                             I should get a GPA of:
-                                            <span>{{ result.gpaExpected }}</span>
+                                            <span>{{ result.gpaExpected || 'N' }}</span>
                                         </p>
                                     </div>
                                 </div>
@@ -179,10 +171,11 @@
 
                 </form>
 
-                <p class="text-center uppercase">
+                <p class="text-center">
                     &#169; Copyright {{ year | date:'yyyy' }} Developed by
-                    <a href="mailto:chizzy.alaedu@aun.edu.ng" title="Chizzy Alaedu, chizzy.alaedu@aun.edu.ng">@tenorz007</a><br>
-                    Advised By Ezinwa. All rights reserved
+                    <a href="mailto:chizzy.alaedu@aun.edu.ng" title="Chizzy Alaedu, chizzy.alaedu@aun.edu.ng">@tenorz007</a>.
+                    All rights reserved<br>
+                    Advised By Ezinwa. Compliments of the Academic Advising Retention Office
                 </p>
 
             </div>
