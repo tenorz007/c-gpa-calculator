@@ -29,7 +29,7 @@
                                 <input id="cgpa" type="number" class="form-control" ng-model="data.cgpa" placeholder="E.g. 2.56">
                             </div>
                             <div class="col-lg-6 col-xs-6">
-                                <label for="cgpa">Earned Hours</label>
+                                <label for="cgpa">Credit Earned</label>
                                 <input id="creditsCompleted" type="number" class="form-control" ng-model="data.creditsCompleted" placeholder="E.g. 45">
                             </div>
                         </div>
@@ -95,27 +95,20 @@
 
                         <div class="row">
                             <div class="form-row title-bar col-bar">
-                                <div class="col-lg-3 col col-xs-3 text-center">
+                                <div class="col-lg-4 col col-xs-4 text-center">
                                     <p class="uppercase">Total Credits</p>
                                     <div class="content-value">
                                         <span>{{ result.totalCredits }}</span>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col col-xs-3 text-center">
-                                    <p class="uppercase">Grade Points</p><br>
+                                <div class="col-lg-4 col col-xs-4 text-center">
+                                    <p class="uppercase">gpa</p>
                                     <div class="content-value">
-                                        <span>{{ result.gradePoint }}</span>
+                                        <span>{{ result.gpa !== 'N' ? result.gpa : 0 }}</span>
                                     </div>
                                 </div>
-
-                                <div class="col-lg-3 col col-xs-3 text-center">
-                                    <p class="uppercase">gpa</p><br>
-                                    <div class="content-value">
-                                        <span>{{ result.gpa }}</span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col col-xs-3 text-center">
-                                    <p class="uppercase">cgpa</p><br>
+                                <div class="col-lg-4 col col-xs-4 text-center">
+                                    <p class="uppercase">cgpa</p>
                                     <div class="content-value">
                                         <span>{{ result.cgpaCalculated || 0 }}</span>
                                     </div>
@@ -161,7 +154,7 @@
                                     <div class="content-value">
                                         <p>
                                             I should get a GPA of:
-                                            <span>{{ result.gpaExpected || 'N' }}</span>
+                                            <span>{{ result.gpaExpected || 0 }}</span>
                                         </p>
                                     </div>
                                 </div>

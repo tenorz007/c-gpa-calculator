@@ -225,7 +225,7 @@ label {
     text-transform: uppercase;
     font-weight: 600;
     color: rgba(0,0,0,.6);
-    font-size: 12px;
+    font-size: 12px !important;
 }
 
 label.error {
