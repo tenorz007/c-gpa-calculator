@@ -2,7 +2,7 @@
 
 > AngularJS Implementation of a grade calculator
 
-![] (demo.gif)
+![](demo.gif)
 
 ## Usage
 Enter in course grades to calculate GPA or CGPA
